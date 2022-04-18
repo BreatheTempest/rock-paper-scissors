@@ -29,6 +29,7 @@ body {
 	max-height: fit-content;
 	margin-left: 60px;
 	padding: 20px;
+	order: 3;
 }
 
 h1 {
@@ -47,7 +48,6 @@ h1 {
 }
 
 button {
-	flex: 3;
 	font-family: 'Shadows Into Light', sans-serif;
 	text-shadow: 2px 2px 1px pink;
 	color: aqua;
@@ -56,4 +56,27 @@ button {
 	padding: 15px 60px;
 	font-size: 4em;
 	cursor: pointer;
+	order: 2;
+}
+
+@media (max-width: 450px) {
+	.container {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	h1 {
+		font-size: 4em;
+	}
+
+	.header p {
+		font-size: 2em;
+	}
+
+	.container p {
+		margin-left: 0;
+		margin-bottom: 30px;
+		order: 1;
+	}
 }
