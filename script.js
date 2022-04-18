@@ -6,7 +6,7 @@ function computerPlay() {
 // function returns randomly rock paper or scissors
 // single round function
 function round(computerPlay, playersChoice) {
-	console.log(computerPlay, playersChoice);
+	console.log(`Computer: ${computerPlay}, Player: ${playersChoice}`);
 	if (computerPlay === playersChoice) {
 		console.log('draw');
 		return 3;
@@ -51,8 +51,11 @@ function game() {
 	for (let i = 0; i < 5; i++) {
 		let computer = computerPlay();
 		let player = prompt('Choose: Rock, Paper or Scissors').toLowerCase();
-		if (console.log(round(computer, player)[1] === 0)) console.log('hello');
-		points++;
+		console.log(`Round #${i + 1}!`);
+		let score = round(computer, player);
+		if (score === 0) i--;
+		else if (score === 1) points++;
+		else if (score === 2) points--;
 	}
 	console.log(points);
 }
