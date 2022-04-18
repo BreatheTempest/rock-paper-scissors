@@ -6,9 +6,9 @@ function computerPlay() {
 // function returns randomly rock paper or scissors
 // single round function
 function round(computerPlay, playersChoice) {
-	console.log(`Computer: ${computerPlay}, Player: ${playersChoice}`);
+	console.log(`Computer: ${computerPlay}, Player: ${playersChoice}.`);
 	if (computerPlay === playersChoice) {
-		console.log('draw');
+		console.log('Draw!');
 		return 3;
 	}
 	if (computerPlay === 'rock' && playersChoice === 'paper') {
@@ -51,13 +51,15 @@ function game() {
 	for (let i = 0; i < 5; i++) {
 		let computer = computerPlay();
 		let player = prompt('Choose: Rock, Paper or Scissors').toLowerCase();
-		console.log(`Round #${i + 1}!`);
+		console.warn(`Round #${i + 1}!`);
 		let score = round(computer, player);
 		if (score === 0) i--;
 		else if (score === 1) points++;
 		else if (score === 2) points--;
 	}
-	console.log(points);
+	if (points === 0) console.warn("It's a draw!");
+	if (points > 0) console.warn('Congratulation, you won!');
+	if (points < 0) console.warn("I'm sorry, you lost!");
 }
 game();
 // treks wins and loses in a 5 round game
