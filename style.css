@@ -19,17 +19,26 @@ body {
 	margin: 30px;
 }
 .container {
+	margin-top: 60px;
 	display: flex;
 }
-.container p {
+.instructions {
 	color: white;
 	background-color: rgba(0, 0, 0, 0.7);
 	border-radius: 50px;
 	max-width: 200px;
-	max-height: fit-content;
 	margin-left: 60px;
 	padding: 20px;
 	order: 3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	text-align: center;
+}
+
+.instructions p {
+	padding: 20px;
 }
 
 h1 {
@@ -61,6 +70,7 @@ button {
 
 @media (max-width: 450px) {
 	.container {
+		margin-top: 0;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
@@ -74,7 +84,7 @@ button {
 		font-size: 2em;
 	}
 
-	.container p {
+	.instructions {
 		margin-left: 0;
 		margin-bottom: 30px;
 		order: 1;
