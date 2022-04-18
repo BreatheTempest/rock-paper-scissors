@@ -1,10 +1,8 @@
-// computer play function
 function computerPlay() {
 	const arr = ['rock', 'paper', 'scissors'];
 	return arr[Math.floor(Math.random() * arr.length)];
 }
-// function returns randomly rock paper or scissors
-// single round function
+
 function round(computerPlay, playersChoice) {
 	console.log(`Computer: ${computerPlay}, Player: ${playersChoice}.`);
 	if (computerPlay === playersChoice) {
@@ -41,11 +39,7 @@ function round(computerPlay, playersChoice) {
 	console.log('Wrong word! Choose Rock, Paper or Scissors');
 	return 0;
 }
-// takes 2 parameters: playerSelection and computerSelection
-// return string that declares a winner
-// make player's choice case-insensitive
 
-// game function
 function game() {
 	let points = 0;
 	for (let i = 0; i < 5; i++) {
@@ -61,6 +55,5 @@ function game() {
 	if (points > 0) console.warn('Congratulation, you won!');
 	if (points < 0) console.warn("I'm sorry, you lost!");
 }
-game();
-// treks wins and loses in a 5 round game
-// use prompt to take user input
+
+const playBtn = document.querySelector('.play');
