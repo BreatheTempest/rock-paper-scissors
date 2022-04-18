@@ -4,29 +4,58 @@ function computerPlay() {
 	return arr[Math.floor(Math.random() * arr.length)];
 }
 // function returns randomly rock paper or scissors
-const playersChoice = prompt('Choose: Rock, Paper or Scissors').toLowerCase();
 // single round function
 function round(computerPlay, playersChoice) {
 	console.log(computerPlay, playersChoice);
-	if (computerPlay === playersChoice) return 'draw';
-	if (computerPlay === 'rock' && playersChoice === 'paper')
-		return 'You win! Paper beats Rock';
-	if (computerPlay === 'rock' && playersChoice === 'scissors')
-		return 'You lose! Rock beats Scissors';
-	if (computerPlay === 'paper' && playersChoice === 'scissors')
-		return 'You win! Scissors beats Paper';
-	if (computerPlay === 'paper' && playersChoice === 'rock')
-		return 'You lose! Paper beats Rock';
-	if (computerPlay === 'scissors' && playersChoice === 'paper')
-		return 'You lose! Scissors beats Paper';
-	if (computerPlay === 'scissors' && playersChoice === 'rock')
-		return 'You win! Rock beats Scissors';
+	if (computerPlay === playersChoice) {
+		console.log('draw');
+		return 3;
+	}
+	if (computerPlay === 'rock' && playersChoice === 'paper') {
+		console.log('You win! Paper beats Rock');
+		return 1;
+	}
+	if (computerPlay === 'rock' && playersChoice === 'scissors') {
+		console.log('You lose! Rock beats Scissors');
+		return 2;
+	}
+	if (computerPlay === 'paper' && playersChoice === 'scissors') {
+		console.log('You win! Scissors beats Paper');
+		return 1;
+	}
+
+	if (computerPlay === 'paper' && playersChoice === 'rock') {
+		console.log('You lose! Paper beats Rock');
+		return 2;
+	}
+
+	if (computerPlay === 'scissors' && playersChoice === 'paper') {
+		console.log('You lose! Scissors beats Paper');
+		return 2;
+	}
+	if (computerPlay === 'scissors' && playersChoice === 'rock') {
+		console.log('You win! Rock beats Scissors');
+		return 1;
+	}
+
+	console.log('Wrong word! Choose Rock, Paper or Scissors');
+	return 0;
 }
-console.log(round(computerPlay(), playersChoice));
 // takes 2 parameters: playerSelection and computerSelection
 // return string that declares a winner
 // make player's choice case-insensitive
 
 // game function
+function game() {
+	let points = 0;
+	for (let i = 0; i < 5; i++) {
+		let computer = computerPlay();
+		let player = prompt('Choose: Rock, Paper or Scissors').toLowerCase();
+		if (console.log(round(computer, player)[1] === 0)) console.log('hello');
+		points++;
+	}
+	console.log(points);
+}
+game();
 // treks wins and loses in a 5 round game
 // use prompt to take user input
