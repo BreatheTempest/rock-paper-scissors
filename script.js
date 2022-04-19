@@ -13,49 +13,29 @@ function round(computerPlay, playersChoice) {
 		);
 		return 3;
 	}
-	if (computerPlay === 'Rock' && playersChoice === 'Paper') {
+
+	if (
+		(computerPlay === 'Rock' && playersChoice === 'Paper') ||
+		(computerPlay === 'Paper' && playersChoice === 'Scissors') ||
+		(computerPlay === 'Scissors' && playersChoice === 'Rock')
+	) {
 		console.log(
-			'%cYou win! Paper beats Rock',
-			'font-size:12px; background-color:#417a41; color:white; padding:8px; border-radius:50px'
-		);
-		return 1;
-	}
-	if (computerPlay === 'Rock' && playersChoice === 'Scissors') {
-		console.log(
-			'%cYou lose! Rock beats Scissors',
-			'font-size:12px; background-color:#dc546f; color:white; padding:8px; border-radius:50px'
-		);
-		return 2;
-	}
-	if (computerPlay === 'Paper' && playersChoice === 'Scissors') {
-		console.log(
-			'%cYou win! Scissors beats Paper',
+			`%cYou win! ${playersChoice} beats ${computerPlay}`,
 			'font-size:12px; background-color:#417a41; color:white; padding:8px; border-radius:50px'
 		);
 		return 1;
 	}
 
-	if (computerPlay === 'Paper' && playersChoice === 'Rock') {
+	if (
+		(computerPlay === 'Rock' && playersChoice === 'Scissors') ||
+		(computerPlay === 'Paper' && playersChoice === 'Rock') ||
+		(computerPlay === 'Scissors' && playersChoice === 'Paper')
+	) {
 		console.log(
-			'%cYou lose! Paper beats Rock',
+			`%cYou lose! ${computerPlay} beats ${playersChoice}`,
 			'font-size:12px; background-color:#dc546f; color:white; padding:8px; border-radius:50px'
 		);
 		return 2;
-	}
-
-	if (computerPlay === 'Scissors' && playersChoice === 'Paper') {
-		console.log(
-			'%cYou lose! Scissors beats Paper',
-			'font-size:12px; background-color:#dc546f; color:white; padding:8px; border-radius:50px'
-		);
-		return 2;
-	}
-	if (computerPlay === 'Scissors' && playersChoice === 'Rock') {
-		console.log(
-			'%cYou win! Rock beats Scissors',
-			'font-size:12px; background-color:#417a41; color:white; padding:8px; border-radius:50px'
-		);
-		return 1;
 	}
 
 	console.log(
@@ -80,8 +60,7 @@ function game() {
 			return;
 		}
 		player = player[0].toUpperCase() + player.slice(1).toLowerCase();
-		console.log(player);
-		console.log(`%cRound #${i + 1}!`, 'font-size:15px; ');
+		console.log(`%cRound ${i + 1}!`, 'font-size:15px; ');
 		let score = round(computer, player);
 		if (score === 0) i--;
 		else if (score === 1) points++;
