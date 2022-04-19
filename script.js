@@ -3,14 +3,15 @@ function computerPlay() {
 	return arr[Math.floor(Math.random() * arr.length)];
 }
 
+function consoleStyle(font, bg) {
+	return `font-size:${font}px; background-color:${bg}; color:white; padding:12px; border-radius:50px`;
+}
+
 function round(computerPlay, playersChoice) {
 	console.log(`Computer: ${computerPlay}`);
 	console.log(`Player: ${playersChoice}`);
 	if (computerPlay === playersChoice) {
-		console.log(
-			'%cDraw!',
-			'font-size:12px; background-color:dimgray; color:white; padding:8px; border-radius:50px'
-		);
+		console.log('%cDraw!', `${consoleStyle(12, 'dimgray')}`);
 		return 3;
 	}
 
@@ -21,7 +22,7 @@ function round(computerPlay, playersChoice) {
 	) {
 		console.log(
 			`%cYou win! ${playersChoice} beats ${computerPlay}`,
-			'font-size:12px; background-color:#417a41; color:white; padding:8px; border-radius:50px'
+			`${consoleStyle(12, '#417a41')}`
 		);
 		return 1;
 	}
@@ -33,23 +34,20 @@ function round(computerPlay, playersChoice) {
 	) {
 		console.log(
 			`%cYou lose! ${computerPlay} beats ${playersChoice}`,
-			'font-size:12px; background-color:#dc546f; color:white; padding:8px; border-radius:50px'
+			`${consoleStyle(12, '#dc546f')}`
 		);
 		return 2;
 	}
 
 	console.log(
 		'%cWrong word! Choose Rock, Paper or Scissors',
-		'font-size:12px; background-color:sienna; color:white; padding:8px; border-radius:50px'
+		`${consoleStyle(12, 'sienna')}`
 	);
 	return 0;
 }
 
 function game() {
-	console.log(
-		'%cNew game!',
-		'font-size:30px; background-color:#333; color:white; padding:8px 16px; border-radius:50px;'
-	);
+	console.log('%cNew game!', `${consoleStyle(30, '#333')}`);
 
 	let points = 0;
 	for (let i = 0; i < 5; i++) {
@@ -67,20 +65,14 @@ function game() {
 		else if (score === 2) points--;
 	}
 	if (points === 0)
-		console.log(
-			"%cIt's a Draw!",
-			'font-size:20px; background-color:#494949; color:white; padding:16px; border-radius:50px; text-align:center'
-		);
+		console.log("%cIt's a Draw!", `${consoleStyle(20, '#494949')}`);
 	if (points > 0)
 		console.log(
 			'%cCongratulation, you won!',
-			'font-size:20px; background-color:darkgreen; color:white; padding:16px; border-radius:50px; text-align:center'
+			`${consoleStyle(20, 'darkgreen')}`
 		);
 	if (points < 0)
-		console.log(
-			"%cI'm sorry, you lost!",
-			'font-size:20px; background-color:crimson; color:white; padding:16px; border-radius:50px; text-align:center'
-		);
+		console.log("%cI'm sorry, you lost!", `${consoleStyle(20, 'crimson')}`);
 }
 
 const playBtn = document.querySelector('.play');
