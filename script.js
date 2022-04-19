@@ -1,5 +1,5 @@
 function computerPlay() {
-	const arr = ['rock', 'paper', 'scissors'];
+	const arr = ['Rock', 'Paper', 'Scissors'];
 	return arr[Math.floor(Math.random() * arr.length)];
 }
 
@@ -13,21 +13,21 @@ function round(computerPlay, playersChoice) {
 		);
 		return 3;
 	}
-	if (computerPlay === 'rock' && playersChoice === 'paper') {
+	if (computerPlay === 'Rock' && playersChoice === 'Paper') {
 		console.log(
 			'%cYou win! Paper beats Rock',
 			'font-size:12px; background-color:#417a41; color:white; padding:8px; border-radius:50px'
 		);
 		return 1;
 	}
-	if (computerPlay === 'rock' && playersChoice === 'scissors') {
+	if (computerPlay === 'Rock' && playersChoice === 'Scissors') {
 		console.log(
 			'%cYou lose! Rock beats Scissors',
 			'font-size:12px; background-color:#dc546f; color:white; padding:8px; border-radius:50px'
 		);
 		return 2;
 	}
-	if (computerPlay === 'paper' && playersChoice === 'scissors') {
+	if (computerPlay === 'Paper' && playersChoice === 'Scissors') {
 		console.log(
 			'%cYou win! Scissors beats Paper',
 			'font-size:12px; background-color:#417a41; color:white; padding:8px; border-radius:50px'
@@ -35,7 +35,7 @@ function round(computerPlay, playersChoice) {
 		return 1;
 	}
 
-	if (computerPlay === 'paper' && playersChoice === 'rock') {
+	if (computerPlay === 'Paper' && playersChoice === 'Rock') {
 		console.log(
 			'%cYou lose! Paper beats Rock',
 			'font-size:12px; background-color:#dc546f; color:white; padding:8px; border-radius:50px'
@@ -43,14 +43,14 @@ function round(computerPlay, playersChoice) {
 		return 2;
 	}
 
-	if (computerPlay === 'scissors' && playersChoice === 'paper') {
+	if (computerPlay === 'Scissors' && playersChoice === 'Paper') {
 		console.log(
 			'%cYou lose! Scissors beats Paper',
 			'font-size:12px; background-color:#dc546f; color:white; padding:8px; border-radius:50px'
 		);
 		return 2;
 	}
-	if (computerPlay === 'scissors' && playersChoice === 'rock') {
+	if (computerPlay === 'Scissors' && playersChoice === 'Rock') {
 		console.log(
 			'%cYou win! Rock beats Scissors',
 			'font-size:12px; background-color:#417a41; color:white; padding:8px; border-radius:50px'
@@ -79,7 +79,8 @@ function game() {
 			alert('Canceled! Press Play to try again!');
 			return;
 		}
-		player = player.toLowerCase();
+		player = player[0].toUpperCase() + player.slice(1).toLowerCase();
+		console.log(player);
 		console.log(`%cRound #${i + 1}!`, 'font-size:15px; ');
 		let score = round(computer, player);
 		if (score === 0) i--;

@@ -68,7 +68,7 @@ button {
 	order: 2;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
 	.container {
 		margin-top: 0;
 		flex-direction: column;
