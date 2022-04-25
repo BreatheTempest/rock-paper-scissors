@@ -42,6 +42,8 @@ const roundText = document.querySelector('.round');
 const gameResult = document.querySelector('.game-result');
 const textResult = document.querySelector('.text-result');
 const restart = document.querySelector('#restart');
+const labelYou = document.querySelector('.player-choice h4');
+const labelComp = document.querySelector('.computer h4');
 
 let playerScore = 0;
 let compScore = 0;
@@ -49,6 +51,8 @@ let roundNum = 0;
 choices.forEach((choice) =>
 	choice.addEventListener('click', (e) => {
 		document.querySelector('#intro').style.display = 'none';
+		labelYou.innerText = 'You';
+		labelComp.innerText = 'Computer';
 		const play = e.target.innerText;
 		const compPlay = computerPlay();
 		computerChoice.innerText = compPlay;
@@ -74,10 +78,18 @@ choices.forEach((choice) =>
 			roundResult.innerText = '🤝';
 		}
 
-		if (playerScore === 3 || (roundNum === 5 && playerScore > compScore)) {
+		if (
+			playerScore === 3 ||
+			(roundNum === 5 && playerScore > compScore) ||
+			(roundNum === 4 && playerScore === 2 && compScore === 0)
+		) {
 			gameResult.style.display = 'flex';
 			textResult.textContent = 'Congratulations, you won! 😻';
-		} else if (compScore === 3 || (roundNum === 5 && playerScore < compScore)) {
+		} else if (
+			compScore === 3 ||
+			(roundNum === 5 && playerScore < compScore) ||
+			(roundNum === 4 && playerScore === 0 && compScore === 2)
+		) {
 			gameResult.style.display = 'flex';
 			textResult.textContent = "I'm sorry, you lost! 😿";
 		} else if (roundNum === 5 && playerScore === compScore) {
@@ -91,13 +103,15 @@ restart.addEventListener('click', () => {
 	roundNum = 0;
 	compScore = 0;
 	playerScore = 0;
-	roundText.innerText = `Round 1`;
+	roundText.innerText = '';
 	document.querySelectorAll('.result').forEach((item) => {
 		item.classList.remove('draw', 'win', 'lose');
 		item.innerText = '';
 	});
 	playerChoice.innerText = '';
 	computerChoice.innerText = '';
+	labelYou.innerText = '';
+	labelComp.innerText = '';
 	gameResult.style.display = 'none';
 	document.querySelector('#intro').style.display = 'block';
 });

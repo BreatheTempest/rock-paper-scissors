@@ -41,10 +41,15 @@ h1 {
 	text-shadow: 2px 2px 1px pink;
 }
 
+.round {
+	min-height: 100px;
+}
+
 h1.top {
 	font-size: 3em;
 }
 
+h4,
 h3,
 h2 {
 	font-family: 'Shadows Into Light', sans-serif;
@@ -53,17 +58,13 @@ h2 {
 	color: aqua;
 }
 
-h2 {
-	display: none;
-}
-
 #start {
 	transition: transform 2s ease;
 }
 
 #intro {
 	position: absolute;
-	top: 55%;
+	top: 43%;
 	text-align: center;
 	display: flex;
 	justify-content: center;
@@ -83,7 +84,7 @@ button {
 	border: none;
 	cursor: pointer;
 	margin: 10px;
-	transition: 1s ease;
+	transition: 0.5s ease;
 }
 
 .player-choices {
@@ -105,7 +106,7 @@ button {
 
 .choices:hover,
 .play:hover {
-	transform: scale(1.4);
+	transform: scale(1.4) rotate(360deg);
 }
 
 .play {
