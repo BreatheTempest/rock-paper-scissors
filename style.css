@@ -13,6 +13,7 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	color: white;
 }
 
 body.game {
@@ -25,6 +26,10 @@ body.game {
 .container {
 	display: none;
 	gap: 20vw;
+	width: 100%;
+	justify-content: center;
+	position: relative;
+	flex: 1;
 }
 
 h1 {
@@ -39,6 +44,18 @@ h1.top {
 	font-size: 3em;
 }
 
+h3,
+h2 {
+	font-family: 'Shadows Into Light', sans-serif;
+	font-size: 3em;
+	text-shadow: 2px 2px 1px pink;
+	color: aqua;
+}
+
+h2 {
+	display: none;
+}
+
 .header p {
 	text-align: right;
 	font-family: 'Pacifico';
@@ -47,6 +64,36 @@ h1.top {
 }
 
 button {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	margin: 10px;
+}
+
+.player-choices {
+	position: absolute;
+	inset: 0 auto 0 4em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 3em;
+}
+
+.choices {
+	font-size: 2em;
+}
+
+.choice {
+	font-size: 8em;
+}
+
+.choices:hover {
+	transform: scale(1.2);
+	transition: all 0.2s ease-in;
+}
+
+.play {
+	margin-top: 10vh;
 	font-family: 'Shadows Into Light', sans-serif;
 	text-shadow: 2px 2px 1px pink;
 	color: aqua;
@@ -55,20 +102,17 @@ button {
 	font-size: 4em;
 	width: 150px;
 	height: 150px;
-	cursor: pointer;
-	margin: 10px;
 }
 
-#start {
-	margin-top: 10vh;
-}
-
-.player,
-.computer {
+.player-choice,
+.computer,
+#computer,
+#player {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 3em;
 }
 
 button.hide {

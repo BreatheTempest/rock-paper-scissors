@@ -14,15 +14,28 @@
 		<div id="start">
 			<button class="play">Play!</button>
 		</div>
+		<h2 class="round">Round</h2>
 		<div class="container">
-			<div class="player">
-				<button id="rock">🤜</button>
-				<button id="paper">🖐</button>
-				<button id="scisors">✌️</button>
+			<div class="player-choices">
+				<button class="choices">🤜</button>
+				<button class="choices">🖐</button>
+				<button class="choices">✌️</button>
+			</div>
+			<div class="player-choice">
+				<h3>You</h3>
+				<div class="choice" id="player"></div>
 			</div>
 			<div class="computer">
-				<button id="computer"></button>
+				<h3>Computer</h3>
+				<div id="computer" class="choice"></div>
 			</div>
+		</div>
+		<div id="result">
+			<div class="result"></div>
+			<div class="result"></div>
+			<div class="result"></div>
+			<div class="result"></div>
+			<div class="result"></div>
 		</div>
 
 		<script src="script.js"></script>
