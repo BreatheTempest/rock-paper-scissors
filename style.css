@@ -56,6 +56,16 @@ h2 {
 	display: none;
 }
 
+#intro {
+	position: absolute;
+	top: 55%;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 4em;
+}
+
 .header p {
 	text-align: right;
 	font-family: 'Pacifico';
@@ -84,7 +94,7 @@ button {
 }
 
 .choice {
-	font-size: 8em;
+	font-size: 12em;
 }
 
 .choices:hover {
@@ -119,4 +129,17 @@ button.hide {
 	transform: scale(2);
 	transition: all 0.3s ease-in;
 	opacity: 0.1;
+}
+
+#result {
+	display: none;
+	gap: 2em;
+	margin-bottom: 2em;
+}
+
+.result {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background-color: green;
 }

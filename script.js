@@ -3,39 +3,22 @@ function computerPlay() {
 	return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function consoleStyle(font, bg) {
-	return `font-size:${font}px; background-color:${bg}; color:white; padding:12px; border-radius:50px`;
-}
-
 function round(computerPlay, playersChoice) {
-	if (computerPlay === playersChoice) {
-		console.log('%cDraw!', `${consoleStyle(12, 'dimgray')}`);
-		return 3;
-	}
+	if (computerPlay === playersChoice) return 'draw';
 
 	if (
 		(computerPlay === '🤛' && playersChoice === '🖐') ||
 		(computerPlay === '🖐' && playersChoice === '✌️') ||
 		(computerPlay === '✌️' && playersChoice === '🤜')
-	) {
-		console.log(
-			`%cYou win! ${playersChoice} beats ${computerPlay}`,
-			`${consoleStyle(12, '#417a41')}`
-		);
-		return 1;
-	}
+	)
+		return 'win';
 
 	if (
 		(computerPlay === '🤛' && playersChoice === '✌️') ||
 		(computerPlay === '🖐' && playersChoice === '🤜') ||
 		(computerPlay === '✌️' && playersChoice === '🖐')
-	) {
-		console.log(
-			`%cYou lose! ${computerPlay} beats ${playersChoice}`,
-			`${consoleStyle(12, '#dc546f')}`
-		);
-		return 2;
-	}
+	)
+		return 'lose';
 }
 
 // function game() {
@@ -75,6 +58,7 @@ playBtn.addEventListener('click', () => {
 	document.querySelector('#start').style.display = 'none';
 	document.querySelector('.container').style.display = 'flex';
 	document.querySelector('.round').style.display = 'flex';
+	document.querySelector('#result').style.display = 'flex';
 });
 
 const choices = document.querySelectorAll('.choices');
@@ -83,6 +67,7 @@ const playerChoice = document.querySelector('#player');
 const roundText = document.querySelector('.round');
 choices.forEach((choice) =>
 	choice.addEventListener('click', (e) => {
+		document.querySelector('#intro').style.display = 'none';
 		const play = e.target.innerText;
 		const compPlay = computerPlay();
 		computerChoice.innerText = compPlay;
