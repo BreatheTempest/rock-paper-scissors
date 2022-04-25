@@ -1,5 +1,5 @@
 function computerPlay() {
-	const arr = ['Rock', 'Paper', 'Scissors'];
+	const arr = ['🤜', '🖐', '✌️'];
 	return arr[Math.floor(Math.random() * arr.length)];
 }
 
@@ -76,4 +76,10 @@ function game() {
 }
 
 const playBtn = document.querySelector('.play');
-playBtn.addEventListener('click', game);
+playBtn.addEventListener('click', () => {
+	playBtn.classList.add('hide');
+	document.body.classList.add('game');
+	document.querySelector('h1').classList.add('top');
+	document.querySelector('#start').style.display = 'none';
+	document.querySelector('.container').style.display = 'flex';
+});

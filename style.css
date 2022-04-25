@@ -15,30 +15,16 @@ body {
 	align-items: center;
 }
 
+body.game {
+	justify-content: flex-start;
+}
+
 .header {
 	margin: 30px;
 }
 .container {
-	margin-top: 60px;
-	display: flex;
-}
-.instructions {
-	color: white;
-	background-color: rgba(0, 0, 0, 0.7);
-	border-radius: 50px;
-	max-width: 200px;
-	margin-left: 60px;
-	padding: 20px;
-	order: 3;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	text-align: center;
-}
-
-.instructions p {
-	padding: 20px;
+	display: none;
+	gap: 20vw;
 }
 
 h1 {
@@ -47,6 +33,10 @@ h1 {
 	color: white;
 	font-size: 6em;
 	text-shadow: 2px 2px 1px pink;
+}
+
+h1.top {
+	font-size: 3em;
 }
 
 .header p {
@@ -62,31 +52,27 @@ button {
 	color: aqua;
 	background-color: rgba(0, 0, 0, 0.7);
 	border-radius: 50px;
-	padding: 15px 60px;
 	font-size: 4em;
+	width: 150px;
+	height: 150px;
 	cursor: pointer;
-	order: 2;
+	margin: 10px;
 }
 
-@media (max-width: 500px) {
-	.container {
-		margin-top: 0;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
+#start {
+	margin-top: 10vh;
+}
 
-	h1 {
-		font-size: 4em;
-	}
+.player,
+.computer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
 
-	.header p {
-		font-size: 2em;
-	}
-
-	.instructions {
-		margin-left: 0;
-		margin-bottom: 30px;
-		order: 1;
-	}
+button.hide {
+	transform: scale(2);
+	transition: all 0.3s ease-in;
+	opacity: 0.1;
 }
