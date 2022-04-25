@@ -4,7 +4,11 @@ function computerPlay() {
 }
 
 function round(computerPlay, playersChoice) {
-	if (computerPlay === playersChoice) return 'draw';
+	if (
+		computerPlay === playersChoice ||
+		(computerPlay === '🤛' && playersChoice === '🤜')
+	)
+		return 'draw';
 
 	if (
 		(computerPlay === '🤛' && playersChoice === '🖐') ||
@@ -21,35 +25,6 @@ function round(computerPlay, playersChoice) {
 		return 'lose';
 }
 
-// function game() {
-// 	console.log('%cNew game!', `${consoleStyle(30, '#333')}`);
-
-// 	let points = 0;
-// 	for (let i = 0; i < 5; i++) {
-// 		let computer = computerPlay();
-// 		let player = prompt('Choose: Rock, Paper or Scissors');
-// 		if (player === null) {
-// 			alert('Canceled! Press Play to try again!');
-// 			return;
-// 		}
-// 		player = player[0].toUpperCase() + player.slice(1).toLowerCase();
-// 		console.log(`%cRound ${i + 1}!`, 'font-size:15px; ');
-// 		let score = round(computer, player);
-// 		if (score === 0) i--;
-// 		else if (score === 1) points++;
-// 		else if (score === 2) points--;
-// 	}
-// 	if (points === 0)
-// 		console.log("%cIt's a Draw!", `${consoleStyle(20, '#494949')}`);
-// 	if (points > 0)
-// 		console.log(
-// 			'%cCongratulation, you won!',
-// 			`${consoleStyle(20, 'darkgreen')}`
-// 		);
-// 	if (points < 0)
-// 		console.log("%cI'm sorry, you lost!", `${consoleStyle(20, 'crimson')}`);
-// }
-
 const playBtn = document.querySelector('.play');
 playBtn.addEventListener('click', () => {
 	playBtn.classList.add('hide');
@@ -65,6 +40,13 @@ const choices = document.querySelectorAll('.choices');
 const computerChoice = document.querySelector('#computer');
 const playerChoice = document.querySelector('#player');
 const roundText = document.querySelector('.round');
+const gameResult = document.querySelector('.game-result');
+const textResult = document.querySelector('.text-result');
+const restart = document.querySelector('#restart');
+
+let playerScore = 0;
+let compScore = 0;
+let roundNum = 0;
 choices.forEach((choice) =>
 	choice.addEventListener('click', (e) => {
 		document.querySelector('#intro').style.display = 'none';
@@ -73,5 +55,50 @@ choices.forEach((choice) =>
 		computerChoice.innerText = compPlay;
 		playerChoice.innerText = play;
 		const oneRound = round(compPlay, play);
+
+		roundNum++;
+		roundText.innerText = `Round ${roundNum}`;
+		const roundResult = document.querySelector(`#round-${roundNum}`);
+
+		if (oneRound === 'win') {
+			playerScore++;
+			roundResult.classList.add('win');
+			roundResult.innerText = '👍';
+		}
+		if (oneRound === 'lose') {
+			compScore++;
+			roundResult.classList.add('lose');
+			roundResult.innerText = '👎';
+		}
+		if (oneRound === 'draw') {
+			roundResult.classList.add('draw');
+			roundResult.innerText = '🤝';
+		}
+
+		if (playerScore === 3 || (roundNum === 5 && playerScore > compScore)) {
+			gameResult.style.display = 'flex';
+			textResult.textContent = 'Congratulations, you won! 😻';
+		} else if (compScore === 3 || (roundNum === 5 && playerScore < compScore)) {
+			gameResult.style.display = 'flex';
+			textResult.textContent = "I'm sorry, you lost! 😿";
+		} else if (roundNum === 5 && playerScore === compScore) {
+			gameResult.style.display = 'flex';
+			textResult.textContent = "It's a draw. Friendship wins! 😸";
+		}
 	})
 );
+
+restart.addEventListener('click', () => {
+	roundNum = 0;
+	compScore = 0;
+	playerScore = 0;
+	roundText.innerText = `Round 1`;
+	document.querySelectorAll('.result').forEach((item) => {
+		item.classList.remove('draw', 'win', 'lose');
+		item.innerText = '';
+	});
+	playerChoice.innerText = '';
+	computerChoice.innerText = '';
+	gameResult.style.display = 'none';
+	document.querySelector('#intro').style.display = 'block';
+});
