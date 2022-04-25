@@ -27,7 +27,6 @@ function round(computerPlay, playersChoice) {
 
 const playBtn = document.querySelector('.play');
 playBtn.addEventListener('click', () => {
-	playBtn.classList.add('hide');
 	document.body.classList.add('game');
 	document.querySelector('h1').classList.add('top');
 	document.querySelector('#start').style.display = 'none';
